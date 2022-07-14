@@ -1,0 +1,107 @@
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -$gap * 0.5;
+	margin-left: -$gap * 0.5;
+	align-items: stretch;
+}
+
+.col,
+.col-auto {
+	@include makeColumnReady;
+}
+
+@for $i from 1 through $gridColumns {
+	.col-#{$i} {
+		@include makeColumnReady;
+	}
+}
+
+.col {
+	@include makeColumnEq;
+}
+
+.col-auto {
+	@include makeColumnAuto;
+}
+
+@for $i from 1 through $gridColumns {
+	.col-#{$i} {
+		@include makeColumn($i);
+	}
+}
+
+@include mediaUp(sm) {
+	.sm\:col {
+		@include makeColumnEq;
+	}
+	.sm\:col-auto {
+		@include makeColumnAuto;
+	}
+
+	@for $i from 1 through $gridColumns {
+		.sm\:col-#{$i} {
+			@include makeColumnReady;
+			@include makeColumn($i);
+		}
+	}
+}
+
+@include mediaUp(md) {
+	.md\:col {
+		@include makeColumnEq;
+	}
+	.md\:col-auto {
+		@include makeColumnAuto;
+	}
+
+	@for $i from 1 through $gridColumns {
+		.md\:col-#{$i} {
+			@include makeColumnReady;
+			@include makeColumn($i);
+		}
+	}
+}
+
+@include mediaUp(lg) {
+	.lg\:col {
+		@include makeColumnEq;
+	}
+	.lg\:col-auto {
+		@include makeColumnAuto;
+	}
+
+	@for $i from 1 through $gridColumns {
+		.lg\:col-#{$i} {
+			@include makeColumnReady;
+			@include makeColumn($i);
+		}
+	}
+}
+
+@include mediaUp(xl) {
+	.xl\:col {
+		@include makeColumnEq;
+	}
+	.xl\:col-auto {
+		@include makeColumnAuto;
+	}
+
+	@for $i from 1 through $gridColumns {
+		.xl\:col-#{$i} {
+			@include makeColumnReady;
+			@include makeColumn($i);
+		}
+	}
+}
+
+.row.gap-lg {
+	--gap: $gap-lg;
+	margin-left: - $gap-lg * 0.5;
+	margin-right: - $gap-lg * 0.5;
+
+	> * {
+		padding-right: $gap-lg * 0.5;
+		padding-left: $gap-lg * 0.5;
+	}
+}

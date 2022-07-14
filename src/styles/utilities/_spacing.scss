@@ -1,0 +1,285 @@
+$spaces: '0', '025', '050', '075', '100', '150', '200', '300', '375', '400', '500';
+
+
+@function toNum($value) {
+  @if type-of($value) == 'number' {
+    @return $value;
+  } @else if type-of($value) != 'string' {
+    $_: log('Value for `to-number` should be a number or a string.');
+  }
+
+  $result: 0;
+  $digits: 0;
+  $minus: str-slice($value, 1, 1) == '-';
+  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
+
+  @for $i from if($minus, 2, 1) through str-length($value) {
+    $character: str-slice($value, $i, $i);
+
+    @if not (index(map-keys($numbers), $character) or $character == '.') {
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+    }
+
+    @if $character == '.' {
+      $digits: 1;
+    } @else if $digits == 0 {
+      $result: $result * 10 + map-get($numbers, $character);
+    } @else {
+      $digits: $digits * 10;
+      $result: $result + map-get($numbers, $character) / $digits;
+    }
+  }
+
+  @return if($minus, -$result, $result);;
+}
+
+
+@function toRem($value) {
+	@return #{math.div(toNum($value), 100)}rem;
+}
+
+
+// Marings
+
+@each $spaceValue in $spaces {
+	.mt-#{$spaceValue} { margin-top: toRem($spaceValue) !important; }
+}
+
+@each $spaceValue in $spaces {
+	.mr-#{$spaceValue} { margin-right: toRem($spaceValue) !important; }
+}
+
+@each $spaceValue in $spaces {
+	.mb-#{$spaceValue} { margin-bottom: toRem($spaceValue) !important; }
+}
+
+@each $spaceValue in $spaces {
+	.ml-#{$spaceValue} { margin-left: toRem($spaceValue) !important; }
+}
+
+@each $spaceValue in $spaces {
+	.m-#{$spaceValue} { margin: toRem($spaceValue) !important; }
+}
+
+@each $spaceValue in $spaces {
+	.my-#{$spaceValue} {
+		margin-top: toRem($spaceValue) !important;
+		margin-bottom: toRem($spaceValue) !important;
+	}
+}
+
+@each $spaceValue in $spaces {
+	.mx-#{$spaceValue} {
+		margin-left: toRem($spaceValue) !important;
+		margin-right: toRem($spaceValue) !important;
+	}
+}
+
+.m-auto,
+.mx-auto {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+.m-auto,
+.my-auto {
+	margin-top: auto !important;
+	margin-bottom: auto !important;
+}
+.mt-auto { margin-top: auto !important; }
+.mr-auto { margin-right: auto !important; }
+.mb-auto { margin-bottom: auto !important; }
+.ml-auto { margin-left: auto !important; }
+
+// Paddings
+
+@each $spaceValue in $spaces {
+	.pt-#{$spaceValue} { padding-top: toRem($spaceValue) !important; }
+}
+
+@each $spaceValue in $spaces {
+	.pr-#{$spaceValue} { padding-right: toRem($spaceValue) !important; }
+}
+
+@each $spaceValue in $spaces {
+	.pb-#{$spaceValue} { padding-bottom: toRem($spaceValue) !important; }
+}
+
+@each $spaceValue in $spaces {
+	.pl-#{$spaceValue} { padding-left: toRem($spaceValue) !important; }
+}
+
+@each $spaceValue in $spaces {
+	.p-#{$spaceValue} { padding: toRem($spaceValue) !important; }
+}
+
+.p-auto,
+.px-auto {
+	padding-left: auto !important;
+	padding-right: auto !important;
+}
+.p-auto,
+.py-auto {
+	padding-top: auto !important;
+	padding-bottom: auto !important;
+}
+.pt-auto { padding-top: auto !important; }
+.pr-auto { padding-right: auto !important; }
+.pb-auto { padding-bottom: auto !important; }
+.pl-auto { padding-left: auto !important; }
+
+@each $spaceValue in $spaces {
+	.py-#{$spaceValue} {
+		padding-top: toRem($spaceValue) !important;
+		padding-bottom: toRem($spaceValue) !important;
+	}
+}
+
+@each $spaceValue in $spaces {
+	.px-#{$spaceValue} {
+		padding-left: toRem($spaceValue) !important;
+		padding-right: toRem($spaceValue) !important;
+	}
+}
+
+@include mediaUp(sm) {
+
+	// Marings
+
+	@each $spaceValue in $spaces {
+		.sm\:mt-#{$spaceValue} { margin-top: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.sm\:mr-#{$spaceValue} { margin-right: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.sm\:mb-#{$spaceValue} { margin-bottom: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.sm\:ml-#{$spaceValue} { margin-left: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.sm\:m-#{$spaceValue} { margin: toRem($spaceValue) !important; }
+	}
+
+	// Paddings
+
+	@each $spaceValue in $spaces {
+		.sm\:pt-#{$spaceValue} { padding-top: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.sm\:pr-#{$spaceValue} { padding-right: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.sm\:pb-#{$spaceValue} { padding-bottom: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.sm\:pl-#{$spaceValue} { padding-left: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.sm\:p-#{$spaceValue} { padding: toRem($spaceValue) !important; }
+	}
+}
+
+@include mediaUp(md) {
+
+	@each $spaceValue in $spaces {
+		.md\:mt-#{$spaceValue} { margin-top: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.md\:mr-#{$spaceValue} { margin-right: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.md\:mb-#{$spaceValue} { margin-bottom: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.md\:ml-#{$spaceValue} { margin-left: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.md\:m-#{$spaceValue} { margin: toRem($spaceValue) !important; }
+	}
+
+
+	@each $spaceValue in $spaces {
+		.md\:pt-#{$spaceValue} { padding-top: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.md\:pr-#{$spaceValue} { padding-right: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.md\:pb-#{$spaceValue} { padding-bottom: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.md\:pl-#{$spaceValue} { padding-left: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.md\:p-#{$spaceValue} { padding: toRem($spaceValue) !important; }
+	}
+}
+
+@include mediaUp(lg) {
+
+	@each $spaceValue in $spaces {
+		.lg\:mt-#{$spaceValue} { margin-top: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.lg\:mr-#{$spaceValue} { margin-right: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.lg\:mb-#{$spaceValue} { margin-bottom: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.lg\:ml-#{$spaceValue} { margin-left: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.lg\:m-#{$spaceValue} { margin: toRem($spaceValue) !important; }
+	}
+
+
+	@each $spaceValue in $spaces {
+		.lg\:pt-#{$spaceValue} { padding-top: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.lg\:pr-#{$spaceValue} { padding-right: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.lg\:pb-#{$spaceValue} { padding-bottom: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.lg\:pl-#{$spaceValue} { padding-left: toRem($spaceValue) !important; }
+	}
+
+	@each $spaceValue in $spaces {
+		.lg\:p-#{$spaceValue} { padding: toRem($spaceValue) !important; }
+	}
+}
+
+.flowMargin:first-child {
+	margin-top: 0 !important;
+}
+
+.flowMargin:last-child {
+	margin-bottom: 0 !important;
+}

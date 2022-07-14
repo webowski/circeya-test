@@ -1,0 +1,44 @@
+$basicLightbox__background:  $major;
+
+@import 'basiclightbox/src/styles/main.scss';
+
+.basicLightbox {
+	height: 100vh;
+	padding-top: 60px;
+	overflow-y: scroll;
+	align-items: flex-start;
+
+	@include mediaUp(lg) {
+		padding-top: 0;
+	}
+}
+
+.Popup {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Popup__closer {
+	width: 1.5rem;
+	height: 1.5rem;
+	position: absolute;
+	top: -2.5rem;
+	right: 1.25rem;
+	z-index: 10;
+	border: 0;
+	cursor: pointer;
+	background-color: transparent;
+	appearance: none;
+
+	@include mediaUp(lg) {
+		top: 1.25rem;
+	}
+}
+
+.Popup__closer .Icon {
+	width: 1rem;
+	height: 1rem;
+	fill: var(--inverse);
+}

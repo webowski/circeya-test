@@ -1,0 +1,15 @@
+.container {
+	@include container;
+}
+
+.origin {
+	max-width: calc(var(--containerMax) + var(--sidePadding) * 2);
+	box-sizing: content-box;
+	position: fixed;
+	inset: 0;
+	visibility: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	z-index: 50;
+	display: grid;
+}

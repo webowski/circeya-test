@@ -1,0 +1,33 @@
+body {
+	background-color: var(--bg);
+	padding-top: var(--headerHeight);
+}
+
+.Main {
+	padding-top: 1.875rem;
+	padding-bottom: 3.75rem;
+	word-break: break-word;
+	overflow: hidden;
+
+	@include mediaUp(md) {
+		padding-top: 4rem;
+		padding-bottom: 5rem;
+	}
+
+	@include mediaUp(lg) {
+		padding-top: 5.125rem;
+		padding-bottom: 6rem;
+	}
+}
+
+.Section {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.G-noScroll {
+	overflow: hidden;
+}

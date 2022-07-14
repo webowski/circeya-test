@@ -1,0 +1,17 @@
+@font-face {
+	font-family: 'Orchidea Pro';
+	src: local('Orchidea Pro Medium'), local('OrchideaPro-Medium'),
+			url('../fonts/OrchideaPro/OrchideaPro-Medium.woff2') format('woff2'),
+			url('../fonts/OrchideaPro/OrchideaPro-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Orchidea Pro';
+	src: local('Orchidea Pro Medium Italic'), local('OrchideaPro-MediumItalic'),
+			url('../fonts/OrchideaPro/OrchideaPro-MediumItalic.woff2') format('woff2'),
+			url('../fonts/OrchideaPro/OrchideaPro-MediumItalic.woff') format('woff');
+	font-weight: 500;
+	font-style: italic;
+}

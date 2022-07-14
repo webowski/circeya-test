@@ -1,0 +1,67 @@
+.Header {
+	height: var(--headerHeight);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 50;
+	background-image: linear-gradient(0deg, #464341 0%, #010101 100%);
+	color: var(--inverse);
+
+	@include mediaUp(md) {
+		padding-top: 35px;
+		padding-bottom: 29px;
+	}
+}
+
+.Header__grid {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.Header__logo {
+	@include linkReset;
+	display: block;
+	width: 120px;
+	height: 20px;
+	display: block;
+	flex-shrink: 0;
+
+	@include mediaUp(md) {
+		width: 214px;
+		height: 36px;
+	}
+}
+
+.Header__logo img {
+	display: block;
+	width: 100%;
+}
+
+.Header__phone {
+	@include linkReset;
+	display: block;
+	font-size: 1.5rem;
+}
+
+.Header__phone .Icon {
+	width: 16px;
+	height: 20px;
+	display: block;
+	fill: var(--inverse);
+
+	@include mediaUp(md) {
+		display: none;
+	}
+}
+
+.Header__phone span {
+	display: none;
+
+	@include mediaUp(md) {
+		display: block;
+	}
+}

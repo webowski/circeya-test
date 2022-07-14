@@ -1,0 +1,11 @@
+.Icon {
+	height: 1.5rem;
+	width: 1.5rem;
+	display: block;
+	flex-shrink: 0;
+	fill: currentColor;
+	transition:
+		fill $duration-sm,
+		transform $duration-sm,
+		stroke $duration-sm;
+}

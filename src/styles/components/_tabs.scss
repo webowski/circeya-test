@@ -1,0 +1,41 @@
+.TabsNav {
+	@include listReset(true);
+	display: flex;
+	gap: 24px;
+	margin-bottom: 3.125rem;
+	font-size: 1.125rem;
+	line-height: 1.1;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: .07em;
+
+	@include mediaUp(lg) {
+		margin-bottom: 7rem;
+		gap: 60px;
+		font-size: 2.25rem;
+	}
+}
+
+.TabsNav__item a {
+	padding-bottom: 3px;
+	display: inline-block;
+	text-decoration: none;
+	border-bottom: 3px solid transparent;
+
+	@include mediaUp(lg) {
+		padding-bottom: 5px;
+		border-bottom-width: 5px;
+	}
+}
+
+.TabsNav__item.is-current a {
+	border-bottom-color: var(--major);
+}
+
+.Tab {
+	display: none;
+}
+
+.Tab.is-current {
+	display: block;
+}
